@@ -1,2 +1,2 @@
-# network-segmentation-infrastructure-deployment
+# Homelab
 Segmented network build using pfSense, Proxmox, and Docker with VLAN isolation, firewall rules, and full documentation

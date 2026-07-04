@@ -61,7 +61,8 @@ Created `vmbr1` in Proxmox and attached it to `nic0`, which connects to the ISP 
 
 *Proxmox network page -- vmbr0 on nic1 (LAN), vmbr1 on nic0 (WAN), both active.*
 
-<img width="2556" height="358" alt="Step 6 — pfSense network Configuration (Pre WAN Migration)" src="https://github.com/user-attachments/assets/8ffcf4e5-a00f-4e2a-b8b8-22d3a23b6c16" />
+<img width="2556" height="358" alt="Step 6 — pfSense network Configuration (Pre WAN Migration) blurred" src="https://github.com/user-attachments/assets/f5c03ab4-75fc-43ed-a752-d2164119fd75" />
+
 
 ---
 
@@ -76,7 +77,7 @@ sed -i 's/gateway 192.168.1.1/gateway 192.168.10.1/' /etc/network/interfaces
 
 *The interfaces file showing the sed commands used to migrate Proxmox onto the Management VLAN.*
 
-![interfaces file](insert)
+<img width="1120" height="865" alt="vmbr0-address-change-before" src="https://github.com/user-attachments/assets/c7688cfc-cf5b-40b2-a300-4953644ecc8c" />
 
 ---
 
@@ -89,14 +90,16 @@ First things done in the setup wizard:
 - Enabled RFC1918 and bogon blocking on WAN -- drops spoofed private IPs and invalid address ranges before they hit any firewall rules
 - Set the domain to `home.arpa` -- reserved for home networks, guaranteed not to collide with public domains
 
-After a Proxmox reboot, pfSense didn't come back up and I lost all network access -- without Start at Boot enabled, any Proxmox reboot leaves pfSense stopped and takes down the entire network. Enabled it in the VM options.
+After a Proxmox reboot, pfSense didn't come back up and I lost all network access. Without Start at Boot enabled, any Proxmox reboot leaves pfSense stopped and takes down the entire network. Enabled it in the VM options.
 
 *firewallvm Options tab -- Start at Boot set to Yes.*
 
-![start at boot](insert)
+<img width="722" height="289" alt="pfsense-vm-start-at-boot" src="https://github.com/user-attachments/assets/ee688417-2735-4d3a-bea3-dfa3672623b7" />
+
 
 Client PCs were getting `192.168.1.x` addresses instead of `192.168.10.x`. The ISP router was plugged into the NETGEAR switch and winning the DHCP race over pfSense. Removing it from the switch fixed it.
 
 *pfSense dashboard showing all interfaces up after initial configuration.*
 
-![pfSense dashboard](insert)
+<img width="2494" height="1336" alt="pfsense-dashboard" src="https://github.com/user-attachments/assets/972d9d20-85b1-44be-b9df-abd3911d3500" />
+

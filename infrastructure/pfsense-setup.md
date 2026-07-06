@@ -103,3 +103,14 @@ Client PCs were getting `192.168.1.x` addresses instead of `192.168.10.x`. The I
 
 <img width="2494" height="1336" alt="pfsense-dashboard" src="https://github.com/user-attachments/assets/972d9d20-85b1-44be-b9df-abd3911d3500" />
 
+
+## Static DHCP Reservation
+
+A static DHCP reservation was added for Proxmox so its IP is centrally managed in pfSense alongside all other network assignments. Without it, pfSense could theoretically assign 
+192.168.10.10 to another device.
+
+*DHCP static mapping showing Proxmox reserved at 192.168.10.10.*
+
+<img width="1582" height="269" alt="proxmox-static-ip-reservation" src="https://github.com/user-attachments/assets/d76721f9-e3c2-4069-b358-a9a8fd5f95cf" />
+
+
